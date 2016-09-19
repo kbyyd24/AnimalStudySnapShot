@@ -8,7 +8,7 @@ ThoughtWorks 成都内推作业
 
 如果要使用接口，则按如下方式使用：
 ```java
-SnapShot animalMap = new AnimalSnapShot();
+SnapShotable animalMap = new AnimalSnapShotImpl();
 String snapShot = animalMap.getSnapShot(historyData, id);
 ```
 
@@ -16,8 +16,8 @@ String snapShot = animalMap.getSnapShot(historyData, id);
 
 提供一个接口，提供一个方法
 ```java
-public interface SnapShot {
+public interface SnapShotable {
   String getSnapShot(String historyData, String id);
 }
 ```
-提供一个实现类`AnimalSnapShot`，把这个方法作为`API`发布
+提供一个实现类`AnimalSnapShotImpl`，把这个方法作为`API`发布
