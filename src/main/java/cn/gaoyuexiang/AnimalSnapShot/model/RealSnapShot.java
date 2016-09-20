@@ -1,5 +1,6 @@
 package cn.gaoyuexiang.AnimalSnapShot.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RealSnapShot {
@@ -24,5 +25,14 @@ public class RealSnapShot {
 
 	public List<RealAnimalSnapShot> getAnimals() {
 		return animals;
+	}
+
+	public void setAnimalsByAnimalSnapShots(List<AnimalSnapShot> animals) {
+		this.animals = new ArrayList<>(animals.size());
+		animals.forEach(animal ->
+			this.animals.add(new RealAnimalSnapShot(animal.getName(),
+							animal.getPreviousX(),
+							animal.getPreviousY()))
+		);
 	}
 }
