@@ -27,4 +27,9 @@ public class RealAnimalSnapShot {
 	public String toString() {
 		return name + " " + x + " " + y;
 	}
+
+	public boolean isConflicted(AnimalSnapShot movingAnimal) {
+		return movingAnimal.getPreviousX() != this.x
+						|| movingAnimal.getPreviousY() != this.y;
+	}
 }
