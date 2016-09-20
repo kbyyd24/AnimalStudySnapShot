@@ -4,6 +4,6 @@ import cn.gaoyuexiang.AnimalSnapShot.model.SnapShot;
 
 import java.util.List;
 
-public interface SerilizeService {
+public interface SerializeService {
 	List<SnapShot> parseToList(String historyData);
 }

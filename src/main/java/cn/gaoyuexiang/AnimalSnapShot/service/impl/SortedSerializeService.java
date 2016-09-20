@@ -1,11 +1,11 @@
 package cn.gaoyuexiang.AnimalSnapShot.service.impl;
 
 import cn.gaoyuexiang.AnimalSnapShot.model.SnapShot;
-import cn.gaoyuexiang.AnimalSnapShot.service.SerilizeService;
+import cn.gaoyuexiang.AnimalSnapShot.service.SerializeService;
 
 import java.util.List;
 
-public class SortedSerilizeService implements SerilizeService {
+public class SortedSerializeService implements SerializeService {
 	@Override
 	public List<SnapShot> parseToList(String historyData) {
 		return null;
