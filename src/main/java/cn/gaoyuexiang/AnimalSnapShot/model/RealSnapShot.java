@@ -35,4 +35,8 @@ public class RealSnapShot {
 							animal.getPreviousY()))
 		);
 	}
+
+	public void addAnimal(RealAnimalSnapShot animal) {
+		this.animals.add(animal);
+	}
 }
