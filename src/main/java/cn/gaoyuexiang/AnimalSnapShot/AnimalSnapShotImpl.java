@@ -1,6 +1,7 @@
 package cn.gaoyuexiang.AnimalSnapShot;
 
 import cn.gaoyuexiang.AnimalSnapShot.exception.ConflictDataException;
+import cn.gaoyuexiang.AnimalSnapShot.exception.InvalidDataFormatException;
 import cn.gaoyuexiang.AnimalSnapShot.model.AnimalSnapShot;
 import cn.gaoyuexiang.AnimalSnapShot.model.RealAnimalSnapShot;
 import cn.gaoyuexiang.AnimalSnapShot.model.RealSnapShot;
@@ -15,23 +16,29 @@ import java.util.stream.Collectors;
 public class AnimalSnapShotImpl implements SnapShotable {
 	@Override
 	public String getSnapShot(String historyData, String id) {
-		//split historyData and save into a list
-		List<SnapShot> maps = SnapShot.buildList(historyData);
-		//sort the list by time
-		maps.sort((map1, map2) ->	(int) (map1.getTime() - map2.getTime()));
-		//map the list to be a list of RealSnapShot
-		List<RealSnapShot> snapShots = new ArrayList<>(maps.size());
-		mapAnimalsList(maps, snapShots);
-		//search snapshot by id and return result
-		RealSnapShot realSnapShot = snapShots.stream()
-						.filter(snapShot -> snapShot.getId().equals(id))
-						.findFirst()
-						.orElse(new RealSnapShot());
-		if (realSnapShot.getId() == null) return "";
-		realSnapShot.getAnimals()
-						.sort((a1, a2) ->
-										a1.getName().compareTo(a2.getName()));
-		return realSnapShot.getResult();
+		try {
+			//split historyData and save into a list
+			List<SnapShot> maps = SnapShot.buildList(historyData);
+			//sort the list by time
+			maps.sort((map1, map2) -> (int) (map1.getTime() - map2.getTime()));
+			//map the list to be a list of RealSnapShot
+			List<RealSnapShot> snapShots = new ArrayList<>(maps.size());
+			mapAnimalsList(maps, snapShots);
+			//search snapshot by id and return result
+			RealSnapShot realSnapShot = snapShots.stream()
+							.filter(snapShot -> snapShot.getId().equals(id))
+							.findFirst()
+							.orElse(new RealSnapShot());
+			if (realSnapShot.getId() == null) return "";
+			realSnapShot.getAnimals()
+							.sort((a1, a2) ->
+											a1.getName().compareTo(a2.getName()));
+			return realSnapShot.getResult();
+		} catch (ConflictDataException cdException) {
+			return cdException.getMessage();
+		} catch (InvalidDataFormatException infException) {
+			return "Invalid format";
+		}
 	}
 
 	private void mapAnimalsList(List<SnapShot> maps, List<RealSnapShot> snapShots) {
