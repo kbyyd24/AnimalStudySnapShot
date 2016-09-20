@@ -37,6 +37,7 @@ public class SnapShot {
 			setTime(snapShot, split[i++]);
 			while (!split[i].isEmpty()) {
 				snapShot.animals.add(new AnimalSnapShot(split[i++]));
+				if (i >= split.length) break;
 			}
 		}
 		return ret;
