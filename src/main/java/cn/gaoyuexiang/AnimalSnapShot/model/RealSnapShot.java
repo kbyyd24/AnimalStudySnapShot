@@ -39,4 +39,13 @@ public class RealSnapShot {
 	public void addAnimal(RealAnimalSnapShot animal) {
 		this.animals.add(animal);
 	}
+
+	public String getResult() {
+		String ret = "";
+		for (RealAnimalSnapShot animal :
+						animals) {
+			ret += animal.toString() + '\n';
+		}
+		return ret;
+	}
 }
