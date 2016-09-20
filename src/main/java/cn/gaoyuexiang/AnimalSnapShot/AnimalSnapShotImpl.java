@@ -22,7 +22,13 @@ public class AnimalSnapShotImpl implements SnapShotable {
 		//map the list to be a list of RealSnapShot
 		List<RealSnapShot> snapShots = new ArrayList<>(maps.size());
 		mapAnimalsList(maps, snapShots);
-		return null;
+		//search snapshot by id and return result
+		RealSnapShot realSnapShot = snapShots.stream()
+						.filter(snapShot -> snapShot.getId().equals(id))
+						.findFirst()
+						.orElse(new RealSnapShot());
+		if (realSnapShot.getId() == null) return "";
+		return realSnapShot.getResult();
 	}
 
 	private void mapAnimalsList(List<SnapShot> maps, List<RealSnapShot> snapShots) {
