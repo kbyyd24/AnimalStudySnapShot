@@ -39,6 +39,7 @@ public class SnapShot {
 				snapShot.animals.add(new AnimalSnapShot(split[i++]));
 				if (i >= split.length) break;
 			}
+			ret.add(snapShot);
 		}
 		return ret;
 	}
