@@ -1,6 +1,6 @@
 package cn.gaoyuexiang.AnimalSnapShot.exception;
 
-public class ConflictDataException extends RuntimeException {
+public class ConflictDataException extends AnimalStudyException {
 	public ConflictDataException() {
 		super();
 	}

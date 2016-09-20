@@ -1,6 +1,6 @@
 package cn.gaoyuexiang.AnimalSnapShot.exception;
 
-public class InvalidDataFormatException extends RuntimeException {
+public class InvalidDataFormatException extends AnimalStudyException {
 
 	public InvalidDataFormatException() {
 		super();
