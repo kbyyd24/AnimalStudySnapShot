@@ -42,9 +42,10 @@ public class RealSnapShot {
 
 	public String getResult() {
 		String ret = "";
-		for (RealAnimalSnapShot animal :
-						animals) {
-			ret += animal.toString() + '\n';
+		for (int i = 0; i < animals.size(); i++) {
+			ret += animals.get(i).toString();
+			if (i != animals.size() - 1)
+				ret += "\n";
 		}
 		return ret;
 	}
