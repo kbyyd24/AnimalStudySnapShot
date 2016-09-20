@@ -28,6 +28,9 @@ public class AnimalSnapShotImpl implements SnapShotable {
 						.findFirst()
 						.orElse(new RealSnapShot());
 		if (realSnapShot.getId() == null) return "";
+		realSnapShot.getAnimals()
+						.sort((a1, a2) ->
+										a1.getName().compareTo(a2.getName()));
 		return realSnapShot.getResult();
 	}
 
@@ -63,13 +66,17 @@ public class AnimalSnapShotImpl implements SnapShotable {
 			AnimalSnapShot movingAnimal = existedAnimals.stream()
 							.filter(item -> item.getName().equals(name))
 							.findFirst()
-							.orElseThrow(ConflictDataException::new);
-			if (animal.isConflicted(movingAnimal))
-				throw new ConflictDataException("Conflict found at " + map.getId());
-			snapShot.addAnimal(new RealAnimalSnapShot(animal.getName(),
-							movingAnimal.getPreviousX() + movingAnimal.getMovingX(),
-							movingAnimal.getPreviousY() + movingAnimal.getMovingY()));
-			snapShots.add(snapShot);
+							.orElse(new AnimalSnapShot());
+			if (movingAnimal.getName() != null) {
+				if (animal.isConflicted(movingAnimal))
+					throw new ConflictDataException("Conflict found at " + map.getId());
+				snapShot.addAnimal(new RealAnimalSnapShot(animal.getName(),
+								movingAnimal.getPreviousX() + movingAnimal.getMovingX(),
+								movingAnimal.getPreviousY() + movingAnimal.getMovingY()));
+			} else {
+				snapShot.addAnimal(animal);
+			}
+				snapShots.add(snapShot);
 		});
 	}
 
