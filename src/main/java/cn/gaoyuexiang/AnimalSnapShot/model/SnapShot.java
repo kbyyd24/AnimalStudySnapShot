@@ -13,6 +13,18 @@ public class SnapShot {
 	private Long time;
 	private List<AnimalSnapShot> animals;
 
+	/**
+	 * use for test
+	 * @param id
+	 * @param time
+	 */
+	SnapShot(String id, long time) {
+		this.id = id;
+		this.time = time;
+	}
+
+	public SnapShot() {}
+
 	public static List<SnapShot> buildList(String historyData) {
 		if (historyData == null || historyData.isEmpty())
 			return new ArrayList<>();
@@ -49,5 +61,9 @@ public class SnapShot {
 
 	public Long getTime() {
 		return time;
+	}
+
+	public void setAnimals(ArrayList<AnimalSnapShot> animals) {
+		this.animals = animals;
 	}
 }
