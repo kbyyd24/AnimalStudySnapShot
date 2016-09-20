@@ -43,7 +43,7 @@ public class SnapShot {
 	}
 
 	private static void setTime(SnapShot snapShot, String timeStr) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 		try {
 			snapShot.time = dateFormat.parse(timeStr).getTime();
 		} catch (ParseException e) {
