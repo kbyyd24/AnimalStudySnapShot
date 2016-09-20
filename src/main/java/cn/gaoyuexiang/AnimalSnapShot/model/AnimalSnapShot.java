@@ -24,6 +24,8 @@ public class AnimalSnapShot {
 		}
 	}
 
+	public AnimalSnapShot() {}
+
 	public String getName() {
 		return name;
 	}
