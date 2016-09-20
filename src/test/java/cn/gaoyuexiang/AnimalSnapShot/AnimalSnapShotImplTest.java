@@ -1,7 +1,6 @@
 package cn.gaoyuexiang.AnimalSnapShot;
 
 import cn.gaoyuexiang.AnimalSnapShot.exception.ConflictDataException;
-import cn.gaoyuexiang.AnimalSnapShot.exception.InvalidDataFormatException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -30,7 +29,7 @@ public class AnimalSnapShotImplTest {
 		assertEquals(expected, actual);
 	}
 
-	@Test(expected = InvalidDataFormatException.class)
+	@Test
 	public void should_throw_InvalidDataFormatException() throws Exception {
 		String historyData =
 						"e4e87cb2-8e9a-4749-abb6-26c59344dfee\n" +
@@ -44,9 +43,7 @@ public class AnimalSnapShotImplTest {
 										"2016/09/02 22:31:02\n" +
 										"cat1 12 8 3 4";
 		String id = "dcfa0c7a-5855-4ed2-bc8c-4accae8bd155";
-		String expected =
-						"cat1 15 12\n" +
-										"cat2 2 3";
+		String expected = "Invalid format";
 		AnimalSnapShotImpl animalMap = new AnimalSnapShotImpl();
 		String actual = animalMap.getSnapShot(historyData, id);
 		assertEquals(expected, actual);
