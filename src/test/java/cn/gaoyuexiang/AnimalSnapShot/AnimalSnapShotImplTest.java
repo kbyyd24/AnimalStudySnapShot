@@ -3,9 +3,7 @@ package cn.gaoyuexiang.AnimalSnapShot;
 import cn.gaoyuexiang.AnimalSnapShot.exception.ConflictDataException;
 import org.junit.Test;
 
-import static cn.gaoyuexiang.AnimalSnapShot.config.TestHistoryDataConfig.CONLICT_DATA_AT_LAST_HISTORY_DATA;
-import static cn.gaoyuexiang.AnimalSnapShot.config.TestHistoryDataConfig.INVALID_FORMAT_TIME_HISTORY_DATA;
-import static cn.gaoyuexiang.AnimalSnapShot.config.TestHistoryDataConfig.VALID_HISTORY_DATA;
+import static cn.gaoyuexiang.AnimalSnapShot.config.TestHistoryDataConfig.*;
 import static org.junit.Assert.assertEquals;
 
 public class AnimalSnapShotImplTest {
@@ -27,6 +25,8 @@ public class AnimalSnapShotImplTest {
 		String expected = "Invalid format";
 		AnimalSnapShotImpl animalMap = new AnimalSnapShotImpl();
 		String actual = animalMap.getSnapShot(INVALID_FORMAT_TIME_HISTORY_DATA, id);
+		assertEquals(expected, actual);
+		actual = animalMap.getSnapShot(INVALID_FORMAT_ANIMAL_HISTORY_DATA, id);
 		assertEquals(expected, actual);
 	}
 
