@@ -18,7 +18,7 @@ public class SnapShot {
 	 * @param id
 	 * @param time
 	 */
-	SnapShot(String id, long time) {
+	public SnapShot(String id, long time) {
 		this.id = id;
 		this.time = time;
 	}
