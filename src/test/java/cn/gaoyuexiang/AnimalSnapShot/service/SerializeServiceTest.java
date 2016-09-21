@@ -38,14 +38,13 @@ public class SerializeServiceTest {
 
 	@Test
 	public void should_throw_InvalidDataFormatException() throws Exception {
-		List<SnapShot> actual;
 		try {
-			actual = service.parseToList(INVALID_FORMAT_ANIMAL_HISTORY_DATA);
+			service.parseToList(INVALID_FORMAT_ANIMAL_HISTORY_DATA);
 		} catch (InvalidDataFormatException idfException) {
 			assertEquals(idfException.getMessage(), "Invalid format");
 		}
 		try {
-			actual = service.parseToList(INVALID_FORMAT_TIME_HISTORY_DATA);
+			service.parseToList(INVALID_FORMAT_TIME_HISTORY_DATA);
 		} catch (InvalidDataFormatException idException) {
 			assertEquals(idException.getMessage(), "Invalid format");
 		}
