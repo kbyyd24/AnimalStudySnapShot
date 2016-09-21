@@ -34,7 +34,7 @@ public class SnapShot {
 			SnapShot snapShot = new SnapShot();
 			snapShot.animals = new ArrayList<>();
 			snapShot.id = split[i++];
-			setTime(snapShot, split[i++]);
+			setTimeByString(snapShot, split[i++]);
 			while (!split[i].isEmpty()) {
 				snapShot.animals.add(new AnimalSnapShot(split[i++]));
 				if (i >= split.length) break;
@@ -44,7 +44,7 @@ public class SnapShot {
 		return ret;
 	}
 
-	private static void setTime(SnapShot snapShot, String timeStr) {
+	private static void setTimeByString(SnapShot snapShot, String timeStr) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 		try {
 			snapShot.time = dateFormat.parse(timeStr).getTime();
@@ -65,7 +65,18 @@ public class SnapShot {
 		return time;
 	}
 
-	public void setAnimals(ArrayList<AnimalSnapShot> animals) {
-		this.animals = animals;
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setTime(long time) {
+		this.time = time;
+	}
+
+	public void addAnimal(AnimalSnapShot animal) {
+		if (this.animals == null) {
+			this.animals = new ArrayList<>();
+		}
+		this.animals.add(animal);
 	}
 }
