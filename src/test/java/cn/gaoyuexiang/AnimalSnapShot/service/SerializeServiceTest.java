@@ -33,7 +33,7 @@ public class SerializeServiceTest {
 		assertEquals(actual.get(2).getId(), "dcfa0c7a-5855-4ed2-bc8c-4accae8bd155");
 		assertEquals(actual.get(0).getAnimals().size(), 1);
 		assertEquals(actual.get(1).getAnimals().size(), 2);
-		assertEquals(actual.get(2).getAnimals().size(), 2);
+		assertEquals(actual.get(2).getAnimals().size(), 1);
 	}
 
 	@Test
