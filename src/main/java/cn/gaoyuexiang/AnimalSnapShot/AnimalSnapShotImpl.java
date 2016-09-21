@@ -43,4 +43,16 @@ public class AnimalSnapShotImpl implements SnapShotable {
 			return e.getMessage();
 		}
 	}
+
+	@Override
+	public String getSnapShot(String id) {
+		if (this.realSnapShots == null)
+			return "No snapshot data found";
+		try {
+			RealSnapShot aimSnapShot = searchService.search(realSnapShots, id);
+			return aimSnapShot.getResult();
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
 }
