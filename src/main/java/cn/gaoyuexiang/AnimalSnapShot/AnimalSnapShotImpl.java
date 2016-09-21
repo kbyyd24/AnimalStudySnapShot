@@ -55,7 +55,7 @@ public class AnimalSnapShotImpl implements SnapShotable {
 								.collect(Collectors.partitioningBy(predicate));
 				List<AnimalSnapShot> newAnimals = classifiedLists.get(true);
 				List<AnimalSnapShot> existedAnimals = classifiedLists.get(false);
-				snapShot.setAnimalsByAnimalSnapShots(newAnimals);
+				snapShot.addAnimalsByAnimalSnapShots(newAnimals);
 				mapExistedAnimals(snapShots, map, snapShot, preAnimals, existedAnimals);
 			} else {
 				setFirstSnapShot(snapShots, snapShot, animals);
@@ -88,7 +88,7 @@ public class AnimalSnapShotImpl implements SnapShotable {
 	}
 
 	private void setFirstSnapShot(List<RealSnapShot> snapShots, RealSnapShot snapShot, List<AnimalSnapShot> animals) {
-		snapShot.setAnimalsByAnimalSnapShots(animals);
+		snapShot.addAnimalsByAnimalSnapShots(animals);
 		snapShots.add(snapShot);
 	}
 }

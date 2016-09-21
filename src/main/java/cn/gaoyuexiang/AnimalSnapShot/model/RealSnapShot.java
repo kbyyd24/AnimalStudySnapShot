@@ -33,8 +33,8 @@ public class RealSnapShot {
 		}
 		animals.forEach(animal ->
 			this.animals.add(new RealAnimalSnapShot(animal.getName(),
-							animal.getPreviousX(),
-							animal.getPreviousY()))
+							animal.getPreviousX() + animal.getMovingX(),
+							animal.getPreviousY() + animal.getMovingY()))
 		);
 	}
 
