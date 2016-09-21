@@ -1,20 +1,18 @@
-package cn.gaoyuexiang.AnimalSnapShot.service;
+package cn.gaoyuexiang.AnimalSnapShot.service.impl;
 
 import cn.gaoyuexiang.AnimalSnapShot.exception.InvalidDataFormatException;
 import cn.gaoyuexiang.AnimalSnapShot.model.SnapShot;
-import cn.gaoyuexiang.AnimalSnapShot.service.impl.SortedSerializeService;
+import cn.gaoyuexiang.AnimalSnapShot.service.SerializeService;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
-import static cn.gaoyuexiang.AnimalSnapShot.config.TestHistoryDataConfig.INVALID_FORMAT_ANIMAL_HISTORY_DATA;
-import static cn.gaoyuexiang.AnimalSnapShot.config.TestHistoryDataConfig.INVALID_FORMAT_TIME_HISTORY_DATA;
-import static cn.gaoyuexiang.AnimalSnapShot.config.TestHistoryDataConfig.VALID_HISTORY_DATA;
+import static cn.gaoyuexiang.AnimalSnapShot.config.TestHistoryDataConfig.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class SerializeServiceTest {
+public class SortedSerializeServiceTest {
 
 	private SerializeService service;
 
