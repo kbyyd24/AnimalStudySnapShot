@@ -27,8 +27,10 @@ public class RealSnapShot {
 		return animals;
 	}
 
-	public void setAnimalsByAnimalSnapShots(List<AnimalSnapShot> animals) {
-		this.animals = new ArrayList<>(animals.size());
+	public void addAnimalsByAnimalSnapShots(List<AnimalSnapShot> animals) {
+		if (this.animals == null) {
+			this.animals = new ArrayList<>(animals.size());
+		}
 		animals.forEach(animal ->
 			this.animals.add(new RealAnimalSnapShot(animal.getName(),
 							animal.getPreviousX(),
@@ -37,6 +39,8 @@ public class RealSnapShot {
 	}
 
 	public void addAnimal(RealAnimalSnapShot animal) {
+		if (this.animals == null)
+			this.animals = new ArrayList<>();
 		this.animals.add(animal);
 	}
 
