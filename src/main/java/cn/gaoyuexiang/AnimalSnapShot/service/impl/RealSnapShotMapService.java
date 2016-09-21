@@ -25,6 +25,8 @@ public class RealSnapShotMapService implements MapService {
 			} else {
 				mapAnimals(ret, snapShot, realSnapShot);
 			}
+			realSnapShot.getAnimals().sort((ra1, ra2) ->
+							ra1.getName().compareTo(ra2.getName()));
 			ret.add(realSnapShot);
 		});
 		return ret;
