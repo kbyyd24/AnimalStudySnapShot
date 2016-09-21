@@ -8,8 +8,6 @@ public class RealSnapShot {
 	private long time;
 	private List<RealAnimalSnapShot> animals;
 
-	public RealSnapShot() {}
-
 	public RealSnapShot(String id, long time) {
 		this.id = id;
 		this.time = time;
@@ -17,10 +15,6 @@ public class RealSnapShot {
 
 	public String getId() {
 		return id;
-	}
-
-	public long getTime() {
-		return time;
 	}
 
 	public List<RealAnimalSnapShot> getAnimals() {
