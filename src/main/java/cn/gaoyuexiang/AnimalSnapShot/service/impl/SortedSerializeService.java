@@ -25,6 +25,7 @@ public class SortedSerializeService implements SerializeService {
 			}
 			ret.add(snapShot);
 		}
+		ret.sort((s1, s2) -> s1.getTime().compareTo(s2.getTime()));
 		return ret;
 	}
 
