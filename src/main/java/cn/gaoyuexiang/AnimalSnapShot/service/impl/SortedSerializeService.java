@@ -18,14 +18,7 @@ public class SortedSerializeService implements SerializeService {
 		for (int i = 0; i < split.length; i++) {
 			SnapShot snapShot = new SnapShot();
 			snapShot.setId(split[i++]);
-
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
-			try {
-				snapShot.setTime(dateFormat.parse(split[i++]).getTime());
-			} catch (ParseException e) {
-				throw new InvalidDataFormatException("Invalid format");
-			}
-
+			setTime(split[i++], snapShot);
 			while (!split[i].isEmpty()) {
 				snapShot.addAnimal(new AnimalSnapShot(split[i++]));
 				if (i >= split.length) break;
@@ -33,5 +26,14 @@ public class SortedSerializeService implements SerializeService {
 			ret.add(snapShot);
 		}
 		return ret;
+	}
+
+	private void setTime(String time, SnapShot snapShot) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+		try {
+			snapShot.setTime(dateFormat.parse(time).getTime());
+		} catch (ParseException e) {
+			throw new InvalidDataFormatException("Invalid format");
+		}
 	}
 }
