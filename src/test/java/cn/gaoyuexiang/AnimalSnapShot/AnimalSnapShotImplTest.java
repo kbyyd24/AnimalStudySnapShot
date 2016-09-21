@@ -17,6 +17,12 @@ public class AnimalSnapShotImplTest {
 		SnapShotable animalMap = new AnimalSnapShotImpl();
 		String actual = animalMap.getSnapShot(VALID_HISTORY_DATA, id);
 		assertEquals(expected, actual);
+
+		expected = "cat1 12 8\n" +
+						"cat2 2 3";
+		id = "351055db-33e6-4f9b-bfe1-16f1ac446ac1";
+		actual = animalMap.getSnapShot(id);
+		assertEquals(expected, actual);
 	}
 
 	@Test
