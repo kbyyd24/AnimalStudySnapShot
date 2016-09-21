@@ -23,21 +23,29 @@ public class RealSnapShotMapService implements MapService {
 			if (ret.isEmpty()) {
 				realSnapShot.addAnimalsByAnimalSnapShots(snapShot.getAnimals());
 			} else {
-				Map<Boolean, List<AnimalSnapShot>> classfiedSnapShots =
-								partitioningAnimals(snapShot);
-				List<AnimalSnapShot> newAnimals = classfiedSnapShots.get(true);
-				List<AnimalSnapShot> existedAnimals = classfiedSnapShots.get(false);
-				List<RealAnimalSnapShot> preAnimals =
-								ret.get(ret.size() - 1).getAnimals();
-				realSnapShot.addAnimalsByAnimalSnapShots(newAnimals);
-				mapExistedAnimals(realSnapShot, existedAnimals, preAnimals);
+				mapAnimals(ret, snapShot, realSnapShot);
 			}
 			ret.add(realSnapShot);
 		});
 		return ret;
 	}
 
-	private void mapExistedAnimals(RealSnapShot realSnapShot, List<AnimalSnapShot> existedAnimals, List<RealAnimalSnapShot> preAnimals) {
+	private void mapAnimals(List<RealSnapShot> ret,
+	                        SnapShot snapShot,
+	                        RealSnapShot realSnapShot) {
+		Map<Boolean, List<AnimalSnapShot>> classfiedSnapShots =
+						partitioningAnimals(snapShot);
+		List<AnimalSnapShot> newAnimals = classfiedSnapShots.get(true);
+		List<AnimalSnapShot> existedAnimals = classfiedSnapShots.get(false);
+		List<RealAnimalSnapShot> preAnimals =
+						ret.get(ret.size() - 1).getAnimals();
+		realSnapShot.addAnimalsByAnimalSnapShots(newAnimals);
+		mapExistedAnimals(realSnapShot, existedAnimals, preAnimals);
+	}
+
+	private void mapExistedAnimals(RealSnapShot realSnapShot,
+	                               List<AnimalSnapShot> existedAnimals,
+	                               List<RealAnimalSnapShot> preAnimals) {
 		preAnimals.forEach(preAnimal -> {
 			String name = preAnimal.getName();
 			Optional<AnimalSnapShot> matchAnimal = existedAnimals.stream()
