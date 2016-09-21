@@ -15,14 +15,6 @@ public class RealAnimalSnapShot {
 		return name;
 	}
 
-	public int getX() {
-		return x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
 	@Override
 	public String toString() {
 		return name + " " + x + " " + y;
