@@ -9,32 +9,38 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
 public class SearchSnapShotServiceTest {
 
 	private SearchService service;
-	private List<RealSnapShot> source;
+	private Map<String, RealSnapShot> source;
 
 	@Before
 	public void setUp() throws Exception {
 		service = new SearchSnapShotService();
 
-		source = new ArrayList<>(3);
+		List<RealSnapShot> snapShots = new ArrayList<>(3);
 		RealSnapShot realSnapShot = new RealSnapShot("1a", 1L);
 		realSnapShot.addAnimal(new RealAnimalSnapShot("cat1", 10, 9));
-		source.add(realSnapShot);
+		snapShots.add(realSnapShot);
 
 		realSnapShot = new RealSnapShot("2b", 2L);
 		realSnapShot.addAnimal(new RealAnimalSnapShot("cat1", 12, 8));
 		realSnapShot.addAnimal(new RealAnimalSnapShot("cat2", 2, 3));
-		source.add(realSnapShot);
+		snapShots.add(realSnapShot);
 
 		realSnapShot = new RealSnapShot("3c", 3L);
 		realSnapShot.addAnimal(new RealAnimalSnapShot("cat1", 15, 12));
 		realSnapShot.addAnimal(new RealAnimalSnapShot("cat2", 2, 3));
-		source.add(realSnapShot);
+		snapShots.add(realSnapShot);
+
+		 source = snapShots
+						 .stream()
+						 .collect(Collectors.toMap(RealSnapShot::getId, s -> s));
 	}
 
 	@Test
@@ -42,7 +48,7 @@ public class SearchSnapShotServiceTest {
 		String id = "3c";
 		RealSnapShot result = service.search(source, id);
 		assertEquals(result.getId(), id);
-		assertEquals(result.getResult(), source.get(2).getResult());
+		assertEquals(result.getResult(), source.get(id).getResult());
 	}
 
 	@Test
