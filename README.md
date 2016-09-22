@@ -4,9 +4,14 @@
 
 ThoughtWorks 成都内推作业
 
+github:[https://github.com/kbyyd24/AnimalStudySnapShot](https://github.com/kbyyd24/AnimalStudySnapShot)
+
 ### 运行方法
 
-可以运行测试用例验证实现是否成功。
+可以运行测试用例验证实现是否成功。使用`gradle`构建，可以用`gradle`来运行测试
+```shell
+gradle clean build
+```
 
 如果要使用接口，则按如下方式使用：
 ```
