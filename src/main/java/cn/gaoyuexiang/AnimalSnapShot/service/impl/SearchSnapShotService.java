@@ -4,20 +4,16 @@ import cn.gaoyuexiang.AnimalSnapShot.exception.NoSuchSnapShotException;
 import cn.gaoyuexiang.AnimalSnapShot.model.RealSnapShot;
 import cn.gaoyuexiang.AnimalSnapShot.service.SearchService;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 public class SearchSnapShotService implements SearchService {
 
 	@Override
-	public RealSnapShot search(List<RealSnapShot> snapShots, String id) {
-		Optional<RealSnapShot> matchSnapShot = snapShots
-						.stream()
-						.filter(item -> item.getId().equals(id))
-						.findFirst();
-		if (matchSnapShot.isPresent()) {
-			return matchSnapShot.get();
+	public RealSnapShot search(Map<String, RealSnapShot> snapShots, String id) {
+		RealSnapShot realSnapShot = snapShots.get(id);
+		if (realSnapShot == null) {
+			throw new NoSuchSnapShotException("Not found " + id);
 		}
-		throw new NoSuchSnapShotException("Not found " + id);
+		return realSnapShot;
 	}
 }

@@ -2,8 +2,8 @@ package cn.gaoyuexiang.AnimalSnapShot.service;
 
 import cn.gaoyuexiang.AnimalSnapShot.model.RealSnapShot;
 
-import java.util.List;
+import java.util.Map;
 
 public interface SearchService {
-	RealSnapShot search(List<RealSnapShot> snapShots, String id);
+	RealSnapShot search(Map<String, RealSnapShot> snapShots, String id);
 }
