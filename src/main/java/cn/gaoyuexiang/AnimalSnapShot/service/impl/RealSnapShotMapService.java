@@ -61,7 +61,9 @@ public class RealSnapShotMapService implements MapService {
 				realSnapShot.addAnimal(new RealAnimalSnapShot(
 								movingAnimal.getName(),
 								movingAnimal.getPreviousX() + movingAnimal.getMovingX(),
-								movingAnimal.getPreviousY() + movingAnimal.getMovingY()));
+								movingAnimal.getPreviousY() + movingAnimal.getMovingY(),
+								preAnimal.getStartX(),
+								preAnimal.getStartY()));
 			} else {
 				realSnapShot.addAnimal(preAnimal);
 			}

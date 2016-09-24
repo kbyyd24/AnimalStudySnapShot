@@ -12,14 +12,14 @@ public class AnimalSnapShotImplTest {
 	public void should_get_right_answer() throws Exception {
 		String id = "dcfa0c7a-5855-4ed2-bc8c-4accae8bd155";
 		String expected =
-						"cat1 15 12\n" +
-						"cat2 2 3";
+						"cat1 15 12 10 9\n" +
+						"cat2 2 3 2 3";
 		SnapShotable animalMap = new AnimalSnapShotImpl();
 		String actual = animalMap.getSnapShot(VALID_HISTORY_DATA, id);
 		assertEquals(expected, actual);
 
-		expected = "cat1 12 8\n" +
-						"cat2 2 3";
+		expected = "cat1 12 8 10 9\n" +
+						"cat2 2 3 2 3";
 		id = "351055db-33e6-4f9b-bfe1-16f1ac446ac1";
 		actual = animalMap.getSnapShot(id);
 		assertEquals(expected, actual);
