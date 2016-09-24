@@ -58,12 +58,15 @@ public class RealSnapShotMapService implements MapService {
 				if (preAnimal.isConflicted(movingAnimal)) {
 					throw new ConflictDataException("Conflict found at " + realSnapShot.getId());
 				}
-				realSnapShot.addAnimal(new RealAnimalSnapShot(
+				RealAnimalSnapShot realAnimalSnapShot = new RealAnimalSnapShot(
 								movingAnimal.getName(),
 								movingAnimal.getPreviousX() + movingAnimal.getMovingX(),
 								movingAnimal.getPreviousY() + movingAnimal.getMovingY(),
 								preAnimal.getStartX(),
-								preAnimal.getStartY()));
+								preAnimal.getStartY());
+				realAnimalSnapShot.setDistance(Math.abs(movingAnimal.getMovingX()) +
+								Math.abs(movingAnimal.getMovingY()));
+				realSnapShot.addAnimal(realAnimalSnapShot);
 			} else {
 				realSnapShot.addAnimal(preAnimal);
 			}

@@ -6,6 +6,7 @@ public class RealAnimalSnapShot {
 	private int y;
 	private int startX;
 	private int startY;
+	private int distance;
 
 	public RealAnimalSnapShot(String name, int x, int y) {
 		this.name = name;
@@ -43,5 +44,13 @@ public class RealAnimalSnapShot {
 
 	public int getStartY() {
 		return startY;
+	}
+
+	public void setDistance(int distance) {
+		this.distance += distance;
+	}
+
+	public int getDistance() {
+		return distance;
 	}
 }

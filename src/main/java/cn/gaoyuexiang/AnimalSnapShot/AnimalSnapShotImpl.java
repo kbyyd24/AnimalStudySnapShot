@@ -42,10 +42,24 @@ public class AnimalSnapShotImpl implements SnapShotable {
 							.stream()
 							.collect(Collectors.toMap(RealSnapShot::getId, snapShot -> snapShot));
 			RealSnapShot aimSnapShot = searchService.search(realSnapShots, id);
-			return aimSnapShot.getResult();
+			return getResult(aimSnapShot);
 		} catch (Exception e) {
 			return e.getMessage();
 		}
+	}
+
+	private String getResult(RealSnapShot aimSnapShot) {
+		String ret = aimSnapShot.getResult();
+		ret += "\n" + getLongestDistanceAnimal(aimSnapShot);
+		return ret;
+	}
+
+	private String getLongestDistanceAnimal(RealSnapShot aimSnapShot) {
+		aimSnapShot
+						.getAnimals()
+						.sort((a1, a2) ->
+										a2.getDistance() - a1.getDistance());
+		return aimSnapShot.getAnimals().get(0).getName();
 	}
 
 	@Override
@@ -54,7 +68,7 @@ public class AnimalSnapShotImpl implements SnapShotable {
 			return "No snapshot data found";
 		try {
 			RealSnapShot aimSnapShot = searchService.search(realSnapShots, id);
-			return aimSnapShot.getResult();
+			return getResult(aimSnapShot);
 		} catch (Exception e) {
 			return e.getMessage();
 		}
